@@ -15,15 +15,11 @@ const CakeForm = ({onSubmit}) => {
     }
 
     const handleRatingChange = (event) => {
-        setRating(event.target.rating);
+        setRating(event.target.value);
     }
 
     const handleFormSubmission = (event) => {
         event.preventDefault();
-
-        if (cakeName == "" || ingredients == [] || rating == 0) {
-            return
-        }
 
         const newCake = {
             cakeName: cakeName,
@@ -31,9 +27,9 @@ const CakeForm = ({onSubmit}) => {
             rating: rating
         }
 
-        setCakeName("");
-        setIngredients("");
-        setRating("");
+        // setCakeName("");
+        // setIngredients("");
+        // setRating(0);
         onSubmit(newCake);
     }
 
@@ -59,7 +55,7 @@ const CakeForm = ({onSubmit}) => {
             <input 
                 type="number" 
                 id="rating" 
-                //min={0} max={5}
+                min="1" max="5"
                 onChange={handleRatingChange}
                 value={rating}
             />
